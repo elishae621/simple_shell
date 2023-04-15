@@ -5,18 +5,25 @@
  * @cmd: command
  * Return: location of the command or an empty string if it doesn't exxit
  */
-char *get_command_location(char cmd[])
+char *get_command_location(char *cmd)
 {
-    char location[100];
+    printf("in get location");
+    char *location;
+
+    location = malloc(sizeof(char) * (sizeof(cmd) + 10));
+
+    strcpy(location, "");
 
     /* look for the file in the current directory */
     if (access(cmd, F_OK) != -1)
-        return (cmd);
+        strcpy(location, cmd);
 
     /* look for the bin directory */
     if (access(strcat("/bin/", cmd), F_OK) != -1)
-        return (strcat("/bin/", cmd));
+        strcpy(location, (strcat("/bin/", cmd)));
+
+    printf("location: %s", location);
 
     /* command file doesn't exist */
-    return ("");
+    return (location);
 }

@@ -17,33 +17,34 @@ int main(void)
 
         type_prompt();
         read_command(command, parameters);
-        // printf("command: %s\n", command);
-        // printf("parameters: %s\n", parameters[0]);
+        printf("command: %s\n", command);
+        printf("parameters: %s\n", parameters[1]);
 
-        // pid = fork();
-        // if (pid == -1)
-        //     return (-1);
+        pid = fork();
+        if (pid == -1)
+            return (-1);
 
-        // if (pid == 0)
-        // {
-        //     printf("\nin child\n");
-        //     // if (strcmp(command, "exit") == 0)
-        //     //     break;
-        //     strcpy(cmd, get_command_location(command));
-        //     printf("cmd location: %s", cmd);
-        //     if (strcmp(cmd, ""))
-        //     {
-        //         exev = execve(cmd, parameters, envp);
-        //         if (exev == -1)
-        //             perror("Error");
-        //     }
-        //     else
-        //         perror("Command does not exist");
-        // }
-        // else
-        // {
-        //     wait(NULL);
-        // }
+        if (pid == 0)
+        {
+            printf("\nin child\n");
+            printf("yes");
+            strcpy(cmd, command);
+            printf("cmd: %s", cmd);
+            get_command_location(command);
+            printf("cmd location: %s", command);
+            if (strcmp(command, ""))
+            {
+                exev = execve(command, parameters, envp);
+                if (exev == -1)
+                    perror("Error");
+            }
+            else
+                perror("Command does not exist");
+        }
+        else
+        {
+            wait(NULL);
+        }
     }
     return 0;
 }
