@@ -8,8 +8,12 @@
 #include <unistd.h>
 #include <string.h>
 
+extern char **environ;
+
 void type_prompt();
-void read_command(char cmd[], char *par[]);
-char *get_command_location(char cmd[]);
+void read_command(char *cmd, char **par);
+char *get_command_location(char *cmd);
+void execute(char *command, char **parameters, char **envp);
+char *_getenv(const char *varname);
 
 #endif /* SHELL_H */

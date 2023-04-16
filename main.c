@@ -6,45 +6,46 @@
  */
 int main(void)
 {
-    char cmd[100], command[100], *parameters[20];
+    char *cmd, *command, **parameters, *path, *pathname, *head;
     char *envp[] = {(char *)"PATH=/bin", 0};
-    pid_t pid;
-    int exev;
+    int numParameters = 20;
+
+    cmd = malloc(sizeof(char) * 100);
+    command = malloc(sizeof(char) * 100);
+
+    /* Allocate memory for the array of string pointers */
+    parameters = (char **)malloc(numParameters * sizeof(char *));
+
+    /* Check if memory allocation was successful */
+    if (parameters == NULL)
+    {
+        perror("Failed to allocate memory for parameters\n");
+    }
+
+    /* Allocate memory for each individual string in the array */
+    for (int i = 0; i < numParameters; i++)
+    {
+        parameters[i] = (char *)malloc(100 * sizeof(char));
+    }
 
     while (1)
     {
-        // printf("command before prompt: %s, value of cmp is %i\n", command, strcmp(command, "exit"));
-
         type_prompt();
         read_command(command, parameters);
         printf("command: %s\n", command);
         printf("parameters: %s\n", parameters[1]);
 
-        pid = fork();
-        if (pid == -1)
-            return (-1);
+        path = _getenv("PATH");
+        printf("path is %s\n", path);
 
-        if (pid == 0)
-        {
-            printf("\nin child\n");
-            printf("yes");
-            strcpy(cmd, command);
-            printf("cmd: %s", cmd);
-            get_command_location(command);
-            printf("cmd location: %s", command);
-            if (strcmp(command, ""))
-            {
-                exev = execve(command, parameters, envp);
-                if (exev == -1)
-                    perror("Error");
-            }
-            else
-                perror("Command does not exist");
-        }
-        else
-        {
-            wait(NULL);
-        }
+        // execute(command, parameters, envp);
+        // strcpy(cmd, command);
+        // printf("cmd: %s", cmd);
+        // get_command_location(command);
+        // printf("cmd location: %s", command);
+        // if (strcmp(command, ""))
+        // {
+        // }
     }
     return 0;
 }
