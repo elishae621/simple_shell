@@ -6,9 +6,10 @@
  */
 int main(void)
 {
-    char *cmd, *command, **parameters, *path, *pathname, *head;
+    char *cmd, *command, **parameters, *path, *pathname;
     char *envp[] = {(char *)"PATH=/bin", 0};
     int numParameters = 20;
+    linklist *head = NULL;
 
     cmd = malloc(sizeof(char) * 100);
     command = malloc(sizeof(char) * 100);
@@ -36,16 +37,16 @@ int main(void)
         printf("parameters: %s\n", parameters[1]);
 
         path = _getenv("PATH");
-        printf("path is %s\n", path);
+        head = linkedpath(path);
 
-        // execute(command, parameters, envp);
-        // strcpy(cmd, command);
-        // printf("cmd: %s", cmd);
-        // get_command_location(command);
-        // printf("cmd location: %s", command);
-        // if (strcmp(command, ""))
-        // {
-        // }
+        execute(command, parameters, envp);
+        strcpy(cmd, command);
+        printf("cmd: %s", cmd);
+        get_command_location(command);
+        printf("cmd location: %s", command);
+        if (strcmp(command, ""))
+        {
+        }
     }
     return 0;
 }
