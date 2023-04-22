@@ -39,10 +39,11 @@ int main(void)
         path = _getenv("PATH");
         head = linkedpath(path);
 
+        pathname = get_command_location(command, head);
+
         execute(command, parameters, envp);
         strcpy(cmd, command);
         printf("cmd: %s", cmd);
-        get_command_location(command);
         printf("cmd location: %s", command);
         if (strcmp(command, ""))
         {

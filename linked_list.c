@@ -68,19 +68,19 @@ void freeList(linklist **head)
 
 linklist *linkedpath(char *path)
 {
-    linklist *head = NULL;
+    linklist *head;
     char *pathname;
     char *delim = ":";
 
     pathname = strtok(path, delim);
+    head = createNode(pathname);
+    pathname = strtok(NULL, delim);
 
     while (pathname)
     {
         insertNode(&head, pathname);
         pathname = strtok(NULL, delim);
     }
-    // Print the linked list
-    printList(head);
 
     return (head);
 }

@@ -9,7 +9,7 @@ void read_command(char cmd[], char *par[])
 {
     char *line = NULL;
     size_t linecap = 0, linelen;
-    int count = 0, i = 0, j = 0;
+    int count = 0, i = 0, j = 0, len;
     char *array[100], *pch, *delim = " ";
 
     /* Read one line */
@@ -27,6 +27,12 @@ void read_command(char cmd[], char *par[])
 
     /* first word is the command */
     strcpy(cmd, array[0]);
+
+    len = strlen(cmd);
+    if (len > 0)
+    {
+        cmd[len - 1] = '\0';
+    }
 
     /* others are parameters */
     for (int j = 0; j < i; j++)
