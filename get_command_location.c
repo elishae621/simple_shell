@@ -61,6 +61,5 @@ char *get_command_location(char *filename, linklist *head)
 		free(location);
 		tmp = tmp->next;
 	}
-
 	return (NULL);
 }

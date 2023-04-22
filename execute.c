@@ -9,6 +9,9 @@ void execute(char **parameters)
 	pid_t pid;
 	int exev;
 
+	if (!parameters || !parameters[0])
+		return;
+
 	pid = fork();
 	if (pid == -1)
 		perror(parameters[0]);

@@ -27,6 +27,7 @@ int main(void)
 
 	while (1)
 	{
+		signal(SIGINT, sig_handler);
 		type_prompt();
 		read_command(parameters);
 
@@ -35,8 +36,16 @@ int main(void)
 
 		pathname = get_command_location(parameters[0], head);
 
-		strcpy(parameters[0], pathname);
-		execute(parameters);
+		if (strcmp(parameters[0], "exit") == 0)
+			exit(0);
+
+		if (pathname)
+		{
+			strcpy(parameters[0], pathname);
+			execute(parameters);
+		}
+		else
+			perror("Command not found");
 	}
 	return (0);
 }

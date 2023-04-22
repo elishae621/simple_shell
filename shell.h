@@ -28,5 +28,6 @@ linklist *createNode(const char *directory);
 void insertNode(linklist **head, const char *directory);
 void freeList(linklist **head);
 linklist *linkedPath(char *path);
+void sig_handler(int sig_num);
 
 #endif /* SHELL_H */
