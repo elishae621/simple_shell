@@ -5,7 +5,7 @@
  * @cmd: command
  * @par: parameters
  */
-void read_command(char cmd[], char *par[])
+void read_command(char *par[])
 {
     char *line = NULL;
     size_t linecap = 0, linelen;
@@ -25,19 +25,21 @@ void read_command(char cmd[], char *par[])
     }
     free(line);
 
-    /* first word is the command */
-    strcpy(cmd, array[0]);
+    // /* first word is the command */
+    // strcpy(cmd, array[0]);
 
-    len = strlen(cmd);
-    if (len > 0)
-    {
-        cmd[len - 1] = '\0';
-    }
-
+    printf("command is %s\n", array[0]);
     /* others are parameters */
     for (int j = 0; j < i; j++)
     {
+        len = strlen(array[j]);
+        if (len > 0 && array[j][len - 1] == '\n')
+        {
+            array[j][len - 1] = '\0';
+        }
         par[j] = array[j];
+
+        printf("par %d is %s\n", j, par[j]);
     }
     /* NULL-terminate the parameter list */
     par[i] = NULL;

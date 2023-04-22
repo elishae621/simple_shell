@@ -19,9 +19,9 @@ typedef struct linklist
 } linklist;
 
 void type_prompt();
-void read_command(char *cmd, char **par);
+void read_command(char **par);
 char *get_command_location(char *filename, linklist *head);
-void execute(char *command, char **parameters, char **envp);
+void execute(char **parameters);
 char *_getenv(const char *varname);
 linklist *createNode(const char *directory);
 void insertNode(linklist **head, const char *directory);

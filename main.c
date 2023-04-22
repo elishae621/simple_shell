@@ -6,13 +6,9 @@
  */
 int main(void)
 {
-    char *cmd, *command, **parameters, *path, *pathname;
-    char *envp[] = {(char *)"PATH=/bin", 0};
+    char **parameters, *path, *pathname;
     int numParameters = 20;
     linklist *head = NULL;
-
-    cmd = malloc(sizeof(char) * 100);
-    command = malloc(sizeof(char) * 100);
 
     /* Allocate memory for the array of string pointers */
     parameters = (char **)malloc(numParameters * sizeof(char *));
@@ -32,22 +28,15 @@ int main(void)
     while (1)
     {
         type_prompt();
-        read_command(command, parameters);
-        printf("command: %s\n", command);
-        printf("parameters: %s\n", parameters[1]);
+        read_command(parameters);
 
         path = _getenv("PATH");
         head = linkedpath(path);
 
-        pathname = get_command_location(command, head);
+        pathname = get_command_location(parameters[0], head);
 
-        execute(command, parameters, envp);
-        strcpy(cmd, command);
-        printf("cmd: %s", cmd);
-        printf("cmd location: %s", command);
-        if (strcmp(command, ""))
-        {
-        }
+        strcpy(parameters[0], pathname);
+        execute(parameters);
     }
     return 0;
 }
