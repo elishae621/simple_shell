@@ -83,9 +83,8 @@ linklist *linkedPath(char *path)
 	char *pathname;
 	char *delim = ":";
 
+	head = createNode("");
 	pathname = strtok(path, delim);
-	head = createNode(pathname);
-	pathname = strtok(NULL, delim);
 
 	while (pathname)
 	{
