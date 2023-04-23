@@ -31,12 +31,15 @@ char **setUpParameters(void)
  * main - runs the prompt and get the command
  * Return: 0
  */
-int main(void)
+int main(int argc __attribute__((unused)), char **argv)
 {
 	char **parameters, *path, *pathname;
 	linklist *head = NULL;
 	void (*builtin)(char **);
+	char *shell;
+	int line_number = 0;
 
+	shell = *argv;
 	parameters = setUpParameters();
 	while (1)
 	{
@@ -51,13 +54,14 @@ int main(void)
 			builtin(parameters);
 		else
 		{
+			++line_number;
 			if (pathname)
 			{
 				strcpy(parameters[0], pathname);
 				execute(parameters);
 			}
 			else
-				perror("Command not found");
+				printf("%s: %d: %s: not found\n", shell, line_number, parameters[0]);
 		}
 	}
 	return (0);
