@@ -33,3 +33,19 @@ char *_getenv(const char *varname)
 
 	return (NULL);
 }
+
+/**
+ * env - prints out the current env
+ * @parameters: argument passed that is ignored
+ */
+void myenv(char **parameters __attribute__((unused)))
+{
+	int i = 0;
+
+	while (environ[i])
+	{
+		_puts(environ[i]);
+		_puts("\n");
+		i++;
+	}
+}

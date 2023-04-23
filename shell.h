@@ -11,12 +11,27 @@
 
 extern char **environ;
 
-/* Define a struct for the linked list node */
+/**
+ * struct linklist - linked list of all path variables
+ * @directory: pointer to directory string
+ * @next: pointer to next node
+ */
 typedef struct linklist
 {
 	char *directory;
 	struct linklist *next;
 } linklist;
+
+/**
+ * struct funcTable - table of name and function pointer
+ * @name: name of builtin command
+ * @func: pointer to builtin command
+ */
+typedef struct funcTable
+{
+	char *name;
+	void (*func)(char **);
+} funcTable;
 
 void type_prompt(void);
 void read_command(char **par);
@@ -29,5 +44,9 @@ void insertNode(linklist **head, const char *directory);
 void freeList(linklist **head);
 linklist *linkedPath(char *path);
 void sig_handler(int sig_num);
+void (*getBuiltin(char **parameters))(char **parameters);
+void myexit(char **parameters);
+void myenv(char **parameters __attribute__((unused)));
+void _puts(char *string);
 
 #endif /* SHELL_H */

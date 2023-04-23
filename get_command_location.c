@@ -17,6 +17,7 @@ char *strconcat(char *first, char *second, char *third)
 	len3 = strlen(third);
 
 	result = malloc(sizeof(char) * (len1 + len2 + len3 + 1));
+
 	if (!result)
 		return (NULL);
 
