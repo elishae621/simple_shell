@@ -6,21 +6,21 @@
  */
 void myexit(char **parameters)
 {
-    int i, n;
+	int i, n;
 
-    if (parameters[1])
-    {
-        n = atoi(parameters[1]);
-        if (n <= -1)
-            n = 2;
+	if (parameters[1])
+	{
+		n = atoi(parameters[1]);
+		if (n <= -1)
+			n = 2;
 
-        for (i = 0; parameters[i]; i++)
-            free(parameters[i]);
-        free(parameters);
-        exit(n);
-    }
-    for (i = 0; parameters[i]; i++)
-        free(parameters[i]);
-    free(parameters);
-    exit(0);
+		for (i = 0; parameters[i]; i++)
+			free(parameters[i]);
+		free(parameters);
+		exit(n);
+	}
+	for (i = 0; parameters[i]; i++)
+		free(parameters[i]);
+	free(parameters);
+	exit(0);
 }

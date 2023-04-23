@@ -49,5 +49,7 @@ void myexit(char **parameters);
 void myenv(char **parameters __attribute__((unused)));
 void _puts(char *string);
 void mysetenv(char **parameters);
+char **splitstring(char *string, char delim);
+char **setUpParameters(void);
 
 #endif /* SHELL_H */
