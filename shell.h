@@ -51,5 +51,9 @@ void _puts(char *string);
 void mysetenv(char **parameters);
 char **splitstring(char *string, char delim);
 char **setUpParameters(void);
+int _putchar(char c);
+void helper_print_number(int n);
+void print_number(int n);
+void printCustomError(char *shell, int line_number, char *parameter);
 
 #endif /* SHELL_H */

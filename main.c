@@ -28,7 +28,25 @@ char **setUpParameters(void)
 }
 
 /**
+ * printCustomError - print customs error for command not found
+ * @shell: current shell
+ * @line_number: line number
+ * @parameter: command passed to shell
+ */
+void printCustomError(char *shell, int line_number, char *parameter)
+{
+	_puts(shell);
+	_puts(": ");
+	print_number(line_number);
+	_puts(": ");
+	_puts(parameter);
+	_puts(": not found\n");
+}
+
+/**
  * main - runs the prompt and get the command
+ * @argc: number of args passed
+ * @argv: array of args passed
  * Return: 0
  */
 int main(int argc __attribute__((unused)), char **argv)
@@ -61,7 +79,7 @@ int main(int argc __attribute__((unused)), char **argv)
 				execute(parameters);
 			}
 			else
-				printf("%s: %d: %s: not found\n", shell, line_number, parameters[0]);
+				printCustomError(shell, line_number, parameters[0]);
 		}
 	}
 	return (0);

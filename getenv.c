@@ -77,8 +77,6 @@ void mysetenv(char **parameters)
 
 			if (strcmp(env_var_name, parameters[1]) == 0)
 			{
-				printf("env var is %s \n", environ[i]);
-				printf("env var name is %s \n", env_var_name);
 				while (parameters[2][j])
 				{
 					environ[i][strlen(parameters[i]) + 1 + j] = parameters[2][j];
