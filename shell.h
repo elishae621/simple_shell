@@ -38,7 +38,7 @@ void read_command(char **par);
 char *get_command_location(char *filename, linklist *head);
 char *strconcat(char *first, char *second, char *third);
 void execute(char **parameters);
-char *_getenv(const char *varname);
+char *mygetenv(const char *varname);
 linklist *createNode(const char *directory);
 void insertNode(linklist **head, const char *directory);
 void freeList(linklist **head);
@@ -48,5 +48,6 @@ void (*getBuiltin(char **parameters))(char **parameters);
 void myexit(char **parameters);
 void myenv(char **parameters __attribute__((unused)));
 void _puts(char *string);
+void mysetenv(char **parameters);
 
 #endif /* SHELL_H */

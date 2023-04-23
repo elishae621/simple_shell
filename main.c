@@ -38,7 +38,7 @@ int main(void)
 		type_prompt();
 		read_command(parameters);
 
-		path = _getenv("PATH");
+		path = mygetenv("PATH");
 		head = linkedPath(path);
 
 		pathname = get_command_location(parameters[0], head);

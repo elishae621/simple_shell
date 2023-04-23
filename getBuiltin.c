@@ -11,6 +11,7 @@ void (*getBuiltin(char **parameters))(char **parameters)
     funcTable Table[] = {
         {"exit", myexit},
         {"env", myenv},
+        {"setenv", mysetenv},
         {NULL, NULL}};
 
     for (i = 0; Table[i].name; i++)
