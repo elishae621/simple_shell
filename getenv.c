@@ -35,7 +35,7 @@ char *mygetenv(const char *varname)
 }
 
 /**
- * env - prints out the current env
+ * myenv - prints out the current env
  * @parameters: argument passed that is ignored
  */
 void myenv(char **parameters __attribute__((unused)))
@@ -50,9 +50,13 @@ void myenv(char **parameters __attribute__((unused)))
 	}
 }
 
+/**
+ * mysetenv - set the value of an env or replace if exit
+ * @parameters: argument passed that is ignored
+ */
 void mysetenv(char **parameters)
 {
-	int envlen = 0, i;
+	int envlen = 0, i, j = 0;
 	char *env_string, *env_var, *env_var_name;
 
 	if (!parameters[1] || !parameters[2])
@@ -73,18 +77,11 @@ void mysetenv(char **parameters)
 
 			if (strcmp(env_var_name, parameters[1]) == 0)
 			{
-				printf("env var is %s \n", environ[i]);
-				printf("env var name is %s \n", env_var_name);
-				// ptr = strstr(environ[i], env_var_name);
-				printf("yes");
-
-				printf("first value c to change is %c", environ[i][5]);
-				// printf("first value d to change is %lu", ptr - env_var);
-				// 	while (parameters[2][j])
-				// 	{
-				// 		environ[i][strlen(parameters[i]) + 1 + j] = parameters[2][j];
-				// 		j++;
-				// 	}
+				while (parameters[2][j])
+				{
+					environ[i][strlen(parameters[i]) + 1 + j] = parameters[2][j];
+					j++;
+				}
 			}
 		}
 	}
