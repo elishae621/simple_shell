@@ -24,14 +24,14 @@ void read_command(char *par[])
 	/* parse the line into words */
 	while (pch != NULL)
 	{
-		array[i++] = strdup(pch);
+		array[i++] = _strdup(pch);
 		pch = strtok(NULL, delim);
 	}
 	free(line);
 
 	for (j = 0; j < i; j++)
 	{
-		len = strlen(array[j]);
+		len = _strlen(array[j]);
 		if (len > 0 && array[j][len - 1] == '\n')
 		{
 			array[j][len - 1] = '\0';

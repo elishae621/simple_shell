@@ -22,13 +22,13 @@ void handle_command(char *command)
 {
 	int status = 0;
 
-	if (strcmp(command, "exit") == 0)
+	if (_strcmp(command, "exit") == 0)
 	{
 		exit(status);
 	}
 	else if (strncmp(command, "exit ", 5) == 0)
 	{
-		status = atoi(command + 5);
+		status = _atoi(command + 5);
 		exit(status);
 	}
 	else

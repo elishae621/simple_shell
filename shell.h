@@ -6,8 +6,8 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <string.h>
 #include <sys/stat.h>
+#include <string.h>
 
 extern char **environ;
 
@@ -55,5 +55,11 @@ int _putchar(char c);
 void helper_print_number(int n);
 void print_number(int n);
 void printCustomError(char *shell, int line_number, char *parameter);
+char *_strdup(const char *str);
+int _strlen(const char *s);
+int _atoi(const char *s);
+char *_strcpy(char *dest, char *src);
+int _strcmp(char *s1, const char *s2);
+void cd(char **parameters);
 
 #endif /* SHELL_H */

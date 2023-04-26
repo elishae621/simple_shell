@@ -10,7 +10,7 @@ char *mygetenv(const char *varname)
 	char *env_var, *env_var_name, *env_value;
 	int i;
 
-	if (varname == NULL || strlen(varname) == 0)
+	if (varname == NULL || _strlen(varname) == 0)
 	{
 		return (NULL); /* Invalid input */
 	}
@@ -18,13 +18,13 @@ char *mygetenv(const char *varname)
 	for (i = 0; environ[i] != NULL; i++)
 	{
 		/* Each environment variable is in the form "VARname=value" */
-		env_var = strdup(environ[i]);
+		env_var = _strdup(environ[i]);
 		env_var_name = strtok(env_var, "=");
 		env_value = strtok(NULL, "");
 
 		if (env_value != NULL)
 		{
-			if (strcmp(env_var_name, varname) == 0)
+			if (_strcmp(env_var_name, varname) == 0)
 			{
 				return (env_value);
 			}
@@ -72,14 +72,14 @@ void mysetenv(char **parameters)
 	{
 		for (i = 0; environ[i] != NULL; i++)
 		{
-			env_var = strdup(environ[i]);
+			env_var = _strdup(environ[i]);
 			env_var_name = strtok(env_var, "=");
 
-			if (strcmp(env_var_name, parameters[1]) == 0)
+			if (_strcmp(env_var_name, parameters[1]) == 0)
 			{
 				while (parameters[2][j])
 				{
-					environ[i][strlen(parameters[i]) + 1 + j] = parameters[2][j];
+					environ[i][_strlen(parameters[i]) + 1 + j] = parameters[2][j];
 					j++;
 				}
 			}
@@ -87,7 +87,7 @@ void mysetenv(char **parameters)
 	}
 	else
 	{
-		env_string = malloc(strlen(parameters[1]) + strlen(parameters[2]) + 2);
+		env_string = malloc(_strlen(parameters[1]) + _strlen(parameters[2]) + 2);
 		env_string = strconcat(parameters[1], "=", parameters[2]);
 		environ[envlen] = env_string;
 	}

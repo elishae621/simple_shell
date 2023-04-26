@@ -2,7 +2,7 @@
 
 /**
  * myexit - custom exit function to exit shell with or without a status
- * @parameters: args passed
+ * @parameters: parameters passed
  */
 void myexit(char **parameters)
 {
@@ -10,7 +10,7 @@ void myexit(char **parameters)
 
 	if (parameters[1])
 	{
-		n = atoi(parameters[1]);
+		n = _atoi(parameters[1]);
 		if (n <= -1)
 			n = 2;
 

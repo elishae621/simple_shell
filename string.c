@@ -8,7 +8,7 @@ void _puts(char *string)
 {
 	int len;
 
-	len = strlen(string);
+	len = _strlen(string);
 	write(STDOUT_FILENO, string, len);
 }
 
@@ -24,9 +24,9 @@ char *strconcat(char *first, char *second, char *third)
 	char *result;
 	int len1, len2, len3, i, k;
 
-	len1 = strlen(first);
-	len2 = strlen(second);
-	len3 = strlen(third);
+	len1 = _strlen(first);
+	len2 = _strlen(second);
+	len3 = _strlen(third);
 
 	result = malloc(sizeof(char) * (len1 + len2 + len3 + 1));
 
@@ -91,4 +91,55 @@ char **splitstring(char *string, char delim)
 	array[j][k] = '\0';
 
 	return (array);
+}
+
+/**
+ * *_strdup - copies the string given as parameter
+ * @str: string to duplicate
+ *
+ * Return: pointer to the copied string (Success), NULL (Error)
+ */
+char *_strdup(const char *str)
+{
+	char *dup;
+	unsigned int i, len;
+
+	i = 0;
+	len = 0;
+
+	if (str == NULL)
+		return (NULL);
+
+	while (str[len])
+		len++;
+
+	dup = malloc(sizeof(char) * (len + 1));
+
+	if (dup == NULL)
+		return (NULL);
+
+	while ((dup[i] = str[i]) != '\0')
+		i++;
+
+	return (dup);
+}
+
+/**
+ * _strlen - returns the length of a string
+ * @s: string to evaluate
+ *
+ * Return: the length of the string
+ */
+int _strlen(const char *s)
+{
+	int i;
+
+	i = 0;
+
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+
+	return (i);
 }

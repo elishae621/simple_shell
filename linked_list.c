@@ -13,7 +13,7 @@ linklist *createNode(const char *directory)
 
 	if (newNode != NULL)
 	{
-		newNode->directory = strdup(directory);
+		newNode->directory = _strdup(directory);
 		newNode->next = NULL;
 	}
 	return (newNode);

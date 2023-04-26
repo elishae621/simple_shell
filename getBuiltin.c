@@ -2,7 +2,7 @@
 
 /**
  * getBuiltin - check for builtin command
- * @parameters: parameter args
+ * @parameters: parameter parameters
  * Return: pointer to function or 0
  */
 void (*getBuiltin(char **parameters))(char **parameters)
@@ -12,6 +12,7 @@ void (*getBuiltin(char **parameters))(char **parameters)
 		{"exit", myexit},
 		{"env", myenv},
 		{"setenv", mysetenv},
+		{"cd", cd},
 		{NULL, NULL}};
 
 	for (i = 0; Table[i].name; i++)

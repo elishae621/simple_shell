@@ -45,8 +45,8 @@ void printCustomError(char *shell, int line_number, char *parameter)
 
 /**
  * main - runs the prompt and get the command
- * @argc: number of args passed
- * @argv: array of args passed
+ * @argc: number of parameters passed
+ * @argv: array of parameters passed
  * Return: 0
  */
 int main(int argc __attribute__((unused)), char **argv)
@@ -75,7 +75,7 @@ int main(int argc __attribute__((unused)), char **argv)
 			++line_number;
 			if (pathname)
 			{
-				strcpy(parameters[0], pathname);
+				_strcpy(parameters[0], pathname);
 				execute(parameters);
 			}
 			else
